@@ -1,2 +1,1 @@
-# STM32_lib
-STM32 library
+# STM32_Study-notes
