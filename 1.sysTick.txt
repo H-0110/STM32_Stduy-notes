@@ -1,0 +1,19 @@
+1.sysTick是ARM内核的一部分，属于内核的外设，常用来作为操作系统的心跳（系统时基）（切换时间片）。sysTick定时器捆绑在NVIC（嵌套向量中断控制器（Nested Vectored Interrupt Controller））中，可以选择内部和外部时钟源。
+2.相关的寄存器定义和库函数存在于core_x.h中。
+3.相关寄存器
+	CTRL	控制及状态寄存器
+		16	CONTFLAG	是否减到0
+		2	CLKCOURCE	0外部时钟源（STCLK = HCLK/8）
+					1自由时钟源（FCLK = HCK）
+		1 	TICKINT		1使能异常请求
+		0	ENABLE		sysTick使能
+	LOAD	重装载值寄存器
+		23:0	RELOAD		sysTick定时器重装值，自动重装
+	VAL	当前数值寄存器
+		23:0	CURRENT	当前值
+	CALIB	校准数值寄存器
+		23:0	TENMS		10ms内倒计时的格数，由外部提供基准。
+					通常把该值装到RELOAD。
+4.tick（滴答声）sysTick系统定时器是一个24bit的递减定时器，在允许中断和使能的情况下减到0触发中断。
+5.SCB属于嵌套向量中断控制寄存器（NVIC），内核中。
+6.SCB->SHP[12]控制系统控制的优先级。
