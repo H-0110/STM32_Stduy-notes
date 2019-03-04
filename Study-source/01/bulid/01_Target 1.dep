@@ -1,0 +1,2 @@
+Dependencies for Project '01', Target 'Target 1': (DO NOT MODIFY !)
+F (.\applications\startup\startup_stm32f103xe.s)(0x5BF63A64)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_Target_1-I"D:\Program File\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program File\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 526" --pd "STM32F10X_HD SETA 1"--list .\bulid\startup_stm32f103xe.lst --xref -o .\bulid\startup_stm32f103xe.o --depend .\bulid\startup_stm32f103xe.d)
