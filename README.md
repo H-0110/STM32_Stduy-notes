@@ -1,8 +1,15 @@
-# STM32_Study-notes
+<center><h3> 蓝桥杯 </h3></center>
+
 ***
 1. <h5>初始化</h5>
 >- startup_xx.s是启动汇编源文件，上电的时候先执行此文件，从而建立起C语言的运行环境。初始化堆栈指针SP，初始化程序计数器指针PC，设置堆栈的大小，初始化中断向量表，（若开发板上有外部SRAM）配置外部SRAM作为数据存储器。++**调用SystemInit（）函数配置STM32系统时钟**++，设置C库的分支入口——main，最终调用main函数。
->- stm32f10x.h寄存器映射头文件。
+
+|文件名|功能|
+|------|----|
+|stm32f10x.h|寄存器映射头文件|
+|startup_stm32f10x_md.s|启动汇编，初始化堆栈，C语言入口|
+|stm32f10x_it.c|中断|
+|system_stm32f10x.c|包含SystemInit函数|
 2. <h5>DMA</h5>
 >- Direct Memory Acess
 >- MPU响应DMA时不经过MCU，直接从内存读取数据进行进行交换。
@@ -62,5 +69,9 @@ AliasAddr=0X42000000+(A-40000000)*8*4+n*4
 >- SCB(System contorl block)属于，内核中。
 >- SCB->SHP[12]（SHPRx（x = 1,2,3）寄存器为32位寄存器，但是只能字节寻址所以core_x.h定义的SCB结构体将SHP分成了12组，即SHP[12]）控制系统控制的优先级。
 >- 内核优先级用SCB->SHP[12]来控制，其他用NVIC->IP来控制。数越大优先级越低。
+- <h6>编程要点</h6>
+  1. 设置重载寄存器值
+  2. 清除当前数值寄存器的值
+  3. 配置控制与状态寄存器
 
 ***
